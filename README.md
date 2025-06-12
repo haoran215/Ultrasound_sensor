@@ -1,18 +1,28 @@
-# Ultrasound_sensor
+# Ultrasound Sensor Utilities
 
-This repository contains helper scripts for working with the DYP-E08 ultrasonic sensors.
+This repository collects Python scripts for interfacing with DYP-E08 ultrasonic sensors over a serial connection.  The tools provide GUIs for reading distance measurements, configuring sensor parameters and visualising data in real time.
 
-## Requirements
+## Setup
 
-Install Python dependencies using:
+1. Ensure Python 3.8 or later is available on your Raspberry Pi.
+2. For the graphical interfaces install Tkinter:
+   ```bash
+   sudo apt-get install python3-tk
+   ```
+3. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-```bash
-pip install -r requirements.txt
-```
+## Applications
 
-## Usage
+- `dyp_uart_reader.py` &ndash; basic multi-channel monitor with live plots.
+- `dyp_reader_plus.py` &ndash; extended monitor allowing angle/denoise configuration and saving settings.
+- `sonar_map_gui.py` &ndash; displays a polar sonar map of the four channels.
+- `utils/` contains helper scripts for low level register writes.
 
-* `dyp_uart_reader.py` - GUI monitor for reading distance data.
-* `dyp_reader_plus.py` - Extended monitor with configuration options.
-* `sonar_map_gui.py` - Displays a live polar "sonar" map from the four sensor channels.
+Run a script with `python <script.py>` while the sensors are connected to the configured serial port (default `COM13`).  The notebook `plotter.ipynb` shows how to analyse logged data using pandas and SciPy.
 
+## License
+
+This project is distributed under the MIT License.
